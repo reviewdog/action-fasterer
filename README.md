@@ -1,8 +1,8 @@
 # GitHub Action: Run fasterer with reviewdog 🐶
 
-![](https://github.com/vk26/action-fasterer/workflows/CI/badge.svg)
-![](https://img.shields.io/github/license/vk26/action-fasterer)
-![](https://img.shields.io/github/v/release/vk26/action-fasterer)
+![](https://github.com/reviewdog/action-fasterer/workflows/CI/badge.svg)
+![](https://img.shields.io/github/license/reviewdog/action-fasterer)
+![](https://img.shields.io/github/v/release/reviewdog/action-fasterer)
 
 This action runs [fasterer](https://github.com/DamirSvrtan/fasterer) with
 [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
