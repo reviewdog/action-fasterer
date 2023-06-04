@@ -28,6 +28,13 @@ With `reporter: github-pr-review` a comment is added to the Pull Request Convers
 
 **Required**. Must be in form of `github_token: ${{ secrets.github_token }}`'.
 
+### `fasterer_version`
+
+Optional. Set brakeman version. 
+* empty or omit: install latest version
+* `gemfile`: install version from Gemfile (`Gemfile.lock` should be presented, otherwise it will fallback to latest bundler version)
+* version (e.g. `0.10.1`): install said version
+
 ### `tool_name`
 
 Optional. Tool name to use for reviewdog reporter. Useful when running multiple
@@ -42,6 +49,24 @@ It's same as `-level` flag of reviewdog. By default - `error`.
 
 Optional. Reporter of reviewdog command [`github-pr-check`, `github-pr-review`].
 The default is `github-pr-check`.
+
+### `filter_mode`
+
+Optional. Filtering mode for the reviewdog command [`added`, `diff_context`, `file`, `nofilter`].
+Default is `added`.
+
+### `fail_on_error`
+
+Optional.  Exit code for reviewdog when errors are found [`true`, `false`]
+Default is `false`.
+
+### `reviewdog_flags`
+
+Optional. Additional reviewdog flags.
+
+### `workdir`
+
+Optional. The directory from which to look for and run brakeman. Default `.`.
 
 ## Usage
 .github/workflows/main.yml:
