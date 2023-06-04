@@ -5,6 +5,8 @@ inputs:
   github_token:
     description: 'GITHUB_TOKEN.'
     required: true
+  fasterer_version:
+    description: 'Fasterer version'
   tool_name:
     description: 'Tool name to use for reviewdog reporter'
     default: 'fasterer'
@@ -16,14 +18,38 @@ inputs:
       Reporter of reviewdog command [github-pr-check,github-pr-review].
       Default is github-pr-check.
     default: 'github-pr-check'
+  filter_mode:
+    description: |
+      Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
+      Default is added.
+    default: 'added'
+  fail_on_error:
+    description: |
+      Exit code for reviewdog when errors are found [true,false]
+      Default is `false`.
+    default: 'false'
+  reviewdog_flags:
+    description: 'Additional reviewdog flags'
+    default: ''
+  workdir:
+    description: "The directory from which to look for and run fasterer. Default '.'"
+    default: '.'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.github_token }}
-    - ${{ inputs.tool_name }}
-    - ${{ inputs.level }}
-    - ${{ inputs.reporter }}
+  using: 'composite'
+  steps:
+    - run: $GITHUB_ACTION_PATH/entrypoint.sh
+      shell: sh
+      env:
+        REVIEWDOG_VERSION: v0.14.1
+        INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
+        INPUT_FASTERER_VERSION: ${{ inputs.fasterer_version }}
+        INPUT_TOOL_NAME: ${{ inputs.tool_name }}
+        INPUT_LEVEL: ${{ inputs.level }}
+        INPUT_REPORTER: ${{ inputs.reporter }}
+        INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
+        INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
+        INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
+        INPUT_WORKDIR: ${{ inputs.workdir }}
 branding:
   icon: 'check-circle'
   color: 'red'
