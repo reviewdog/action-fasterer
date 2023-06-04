@@ -43,10 +43,10 @@ gem install -N fasterer --version "${FASTERER_VERSION}"
 echo '::endgroup::'
 
 echo '::group:: Running fasterer with reviewdog 🐶 ...'
-
+ 
 # shellcheck disable=SC2086
 fasterer | sed "s/\x1b\[[0-9;]*m//g" \
-  | reviewdog < "$FASTERER_REPORT_FILE" \
+  | reviewdog \
     -efm="%f:%l %m" \
     -efm="%-G%.%#" \
     -name="${INPUT_TOOL_NAME}" \
