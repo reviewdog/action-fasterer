@@ -30,7 +30,7 @@ With `reporter: github-pr-review` a comment is added to the Pull Request Convers
 
 ### `fasterer_version`
 
-Optional. Set brakeman version. 
+Optional. Set fasterer version. 
 * empty or omit: install latest version
 * `gemfile`: install version from Gemfile (`Gemfile.lock` should be presented, otherwise it will fallback to latest bundler version)
 * version (e.g. `0.10.1`): install said version
