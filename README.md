@@ -61,9 +61,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v1
+        uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e # v1.2.0
       - name: fasterer
-        uses: vk26/action-fasterer@v1
+        uses: vk26/action-fasterer@14efb2322db70c51b0211343d444adf457ff4666 # v1
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review # Default is github-pr-check
