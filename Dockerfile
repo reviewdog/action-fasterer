@@ -1,6 +1,6 @@
 FROM ruby:2.6-alpine
 
-ENV REVIEWDOG_VERSION v0.14.1
+ENV REVIEWDOG_VERSION v0.20.3
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN apk add --update --no-cache build-base git
